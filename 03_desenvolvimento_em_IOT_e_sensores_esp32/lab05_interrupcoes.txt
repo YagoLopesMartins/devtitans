@@ -1,1 +1,27 @@
 https://wokwi.com/projects/334280987229815380
+
+https://wokwi.com/projects/334202666333766226
+
+Ok: https://wokwi.com/projects/334204435862389331 lab
+
+#define LED 32
+#define pinoLDRLow 2
+#define pinoLDRHigh 4
+void IRAM_ATTR turnLEDOn_ISR()
+{
+digitalWrite(LED,HIGH);
+}
+void IRAM_ATTR turnLEDOff_ISR()
+{
+digitalWrite(LED,LOW);
+}
+
+void setup() {
+pinMode(LED,OUTPUT);
+pinMode(pinoLDRLow,INPUT);
+pinMode(pinoLDRHigh,INPUT);
+attachInterrupt(pinoLDRLow, turnLEDOn_ISR, RISING);
+attachInterrupt(pinoLDRHigh, turnLEDOff_ISR, FALLING);
+}
+void loop() {
+}
